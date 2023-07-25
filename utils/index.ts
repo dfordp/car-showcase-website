@@ -52,7 +52,7 @@ export async function fetchCars(filters: FilterProps){
 		'X-RapidAPI-Key': rapidApiKey,
 		'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
 	}
-    const response =  await fetch('https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`',{
+    const response =  await fetch('https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make='+ manufacturer +'&year='+ year + '&model='+ model + '&limit='+ limit +'&fuel_type=' + fuel ,{
         headers : headers
     });
 
@@ -62,11 +62,13 @@ export async function fetchCars(filters: FilterProps){
 }
 
 
+
 export const generateCarImageUrl = (car: CarProps, angle?: string) => {
+    const cdnapikey = process.env.CDN_API_KEY
     const url = new URL("https://cdn.imagin.studio/getimage");
     const { make, model, year } = car;
   
-    url.searchParams.append('customer', "hrjavascript-mastery" || '');
+    url.searchParams.append('customer', cdnapikey);
     url.searchParams.append('make', make);
     url.searchParams.append('modelFamily', model.split(" ")[0]);
     url.searchParams.append('zoomType', 'fullscreen');
