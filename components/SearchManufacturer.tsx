@@ -6,7 +6,7 @@ import Image from "next/image"
 import { manufacturers } from "@/constants"
 import { SearchManuFacturerProps } from "@/types"
 
-const SearchManufacturer = ({manufacturer,setManufacturer}:SearchManuFacturerProps) => {
+const SearchManufacturer = ({manufacturer,setManuFacturer}:SearchManuFacturerProps) => {
   
   const [query, setQuery] = useState('')
 
